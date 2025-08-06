@@ -1,0 +1,19 @@
+<% layout('layout') -%>
+
+<h2 class="mb-4">📝 My To-Do List</h2>
+
+<form action="/add" method="POST" class="mb-3 d-flex">
+  <input type="text" name="todo" class="form-control me-2" placeholder="Add a task..." required>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+<ul class="list-group">
+  <% todos.forEach((item, index) => { %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <%= item %>
+      <form action="/delete/<%= index %>" method="POST" class="d-inline">
+        <button class="btn btn-sm btn-danger">✖</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
